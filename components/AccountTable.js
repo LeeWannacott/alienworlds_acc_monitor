@@ -2,7 +2,24 @@ import AccountRow from './AccountRow';
 import { useState, useEffect } from 'react';
 import http from './Axios';
 
+
+
 export default function AccountTable(props) {
+
+  useEffect(() => {
+    console.log('before async')
+    (async () => {
+      // if (typeof document !== "undefined") {
+        // import module for side effects
+        console.log('window')
+        const tableSort = await import('table-sort-js/table-sort.js');
+        // tableSortJs(table)
+        console.log(tableSort)
+
+      // }
+    })()
+  },[]);
+
     const { accounts, onDelete, onTotalTLMChange, onTotalWaxChange, onTotalStakedChange } = props
 
     const initTLM = []
