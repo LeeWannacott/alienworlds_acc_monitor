@@ -3,17 +3,14 @@ import { useState, useEffect } from "react";
 import http from "./Axios";
 
 export default function AccountTable(props) {
-  useEffect(() => {
-    console.log("before async");(async () => {
-      // if (typeof document !== "undefined") {
-      // import module for side effects
-      console.log("window");
-      const tableSort = await import("table-sort-js/table-sort.js");
-      // tableSortJs(table)
-      console.log(tableSort);
 
-      // }
-    })();
+  useEffect(() => {
+    (async () => {
+      const tableSortJs = await import("table-sort-js/table-sort.js");
+      return tableSortJs
+    })().then((tableSortJs) => {
+      tableSortJs.default()
+    });
   }, []);
 
   const {
@@ -115,7 +112,7 @@ export default function AccountTable(props) {
 
   return (
     <div className="flex flex-col w-full overflow-auto">
-      <table className="table-auto border border-gray-500 border-collapse mt-5">
+      <table className="table-sort table-auto border border-gray-500 border-collapse mt-5">
         <thead>
           <tr className="bg-gray-800">
             <th className="w-min">Remove</th>
