@@ -3,13 +3,12 @@ import { useState, useEffect } from "react";
 import http from "./Axios";
 
 export default function AccountTable(props) {
-
   useEffect(() => {
     (async () => {
       const tableSortJs = await import("table-sort-js/table-sort.js");
-      return tableSortJs
+      return tableSortJs;
     })().then((tableSortJs) => {
-      tableSortJs.default()
+      tableSortJs.default();
     });
   }, []);
 
