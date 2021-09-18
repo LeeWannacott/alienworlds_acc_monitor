@@ -3,6 +3,21 @@ import { useState, useEffect } from 'react';
 import http from './Axios';
 
 export default function AccountTable(props) {
+
+
+ useEffect(()=> {
+   console.log(1)
+        const script = document.createElement("script");
+   console.log(2)
+        script.src = "./table-sort";
+   console.log(3)
+        script.async = true;
+   console.log(4)
+        document.body.appendChild(script);
+   console.log(5)
+    },[])
+
+
     const { accounts, onDelete, onTotalTLMChange, onTotalWaxChange, onTotalStakedChange } = props
 
     const initTLM = []
@@ -93,10 +108,10 @@ export default function AccountTable(props) {
             onTotalStakedChange(totalStaked)
         }
     }, [wax])
-
+  
     return (
         <div className="flex flex-col w-full overflow-auto">
-            <table className="table-auto border border-gray-500 border-collapse mt-5">
+            <table className="table-sort table-auto border border-gray-500 border-collapse mt-5">
                 <thead>
                     <tr className="bg-gray-800">
                         <th className="w-min">Remove</th>
